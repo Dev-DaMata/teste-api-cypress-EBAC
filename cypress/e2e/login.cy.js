@@ -14,6 +14,7 @@ describe('Teste de API - Login', () => {
       expect(response.status).eq(200)
     })*/
     .then(res => { //Meu jeito
+      cy.log(res.body.authorization)
       expect(res.body.message).eq("Login realizado com sucesso"),
       expect(res.status).eq(200)
     })
