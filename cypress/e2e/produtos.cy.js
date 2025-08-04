@@ -1,10 +1,17 @@
 /// <reference types="cypress"/>
+import contrato from "../contratos/produtos.contrato"
 
 describe('Teste de API em Produtos', () => {
     let token //variavel que vai armazenar o token
     beforeEach(() => {
         cy.token("fulano@qa.com", "teste").then(tkn => {
             token = tkn //passando o token para a variavel
+        })
+    })
+
+    it.only('Deve validar contrato de produtos com sucesso', () =>{
+        cy.request('produtos').then(res => {
+            return contrato.validateAsync(res.body)
         })
     })
 
